@@ -1,40 +1,23 @@
-const express = require('express');
-const path = require('path');
+import express from 'express'; // This is the Express.js framework, used for building web applications and APIs.
+import path from 'path'; //mported from the Node.js standard library. It provides utilities for working with file and directory paths.
+import { fileURLToPath } from 'url'; //used to convert a file URL from import.meta.url to a file path string
+import moviesRouter from './src/popular.js' //imported from ./src/fetch_popular.js, router created using Express to handle routes realted to fetching popular movies
 
+//variables to get current file directory and filename
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+//express app created
 const app = express();
 
-//routing
-app.get('/app1', function(req, res) {
-    //  JSON data
-    const jsonData = {
-        name: "app1",
-        value: "44",
-    };
-    // Sending JSON response
-    res.json(jsonData);
-});
+//defining the port to use
+const PORT = process.env.PORT || 8000;
 
-app.get('/app2', function(req, res) {
-    //  JSON data
-    const jsonData = {
-        name: "app2",
-        value: "54",
-    };
-    // Sending JSON response
-    res.json(jsonData);
-});
-
-
-
-// Serve static files from the 'public' directory
+//set public as the folder as static - can be directly accessed from the server
 app.use(express.static(path.join(__dirname, 'public')));
 
-//catch all unknown URLs
-app.use((req, res) => {
-    res.status(404).json({ error: "Not Found, invalid url" });
-});
+//use the moviesRouter
+app.use('/api/popular', moviesRouter);
 
-const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
+app.listen(PORT, ()=> console.log(`Server is running on port ${PORT}`));
