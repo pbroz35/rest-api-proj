@@ -10,7 +10,7 @@ router.get('/', async (req, res)=> {
             return res.status(400).json({msg: "Query is required"});
         }
 
-        const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1&api_key=f48dd460e6a0038d30b7ebb29c9713ca`;
+        const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1&api_key=5cd218ca6e4843789fa5bba7bf068e80`;
         const options = {
             method: 'GET',
             headers: {

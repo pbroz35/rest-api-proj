@@ -4,25 +4,35 @@ import { getMovieCards } from './modules/search/searches.js'
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const topBtn = document.querySelector("#top");
 
   topBtn.addEventListener("click", async () => {
+    
     resetScreen();
     const topMoviesDiv = await topMovies();
     document.querySelector("body").appendChild(topMoviesDiv);
+
   });
 
   const searchBtn = document.querySelector("#submit");
+  
   searchBtn.addEventListener("click", async (event) => {
+    
     event.preventDefault();
+
     resetScreen();
+    
     const searchBar = document.querySelector("#search-input");
     const searchTerm = searchBar.value.trim();
+  
     if (searchTerm) {
+
       const searches = await getSearches(searchTerm);
       console.log(searches);
       const searchedMovies = getMovieCards(searches);
       document.querySelector("body").appendChild(searchedMovies);
+    
     }
   });
 });

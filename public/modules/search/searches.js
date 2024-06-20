@@ -12,7 +12,7 @@ export function getMovieCards(searches) {
         info.classList.add('movie-info');
         movieCard.appendChild(info);
 
-        let movieTitle = document.createElement('h1');
+        let movieTitle = document.createElement('li');
         movieTitle.innerText = movie.title;
         info.appendChild(movieTitle);
 

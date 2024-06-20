@@ -11,7 +11,7 @@ import fetch from 'node-fetch'
 router.get('/', async (req, res) => {
     try {
         // URL of the external API to fetch popular movies
-        const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=f48dd460e6a0038d30b7ebb29c9713ca';
+        const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=5cd218ca6e4843789fa5bba7bf068e80';
 
         // Options for the fetch request, specifying the method and headers
         const options = {
